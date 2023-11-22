@@ -5,11 +5,11 @@ A Notredame nos desafiou na Global Solutions a tornar a saúde mais acessível �
 # **O programa:**
 
 ![Imagem1](https://github.com/rcm2005/Health-Center-Notredame/assets/68041167/ef843ab5-93a9-485c-9029-72bbbff23864)
-          (Figura 6: Tela inicial do programa Health Center construído em Python)
+ <br>          (Figura 6: Tela inicial do programa Health Center construído em Python)
 
 O programa Health Center foi pensado para fornecer uma experiência completa e intuitiva tanto para o usuário paciente quanto para o usuário médico, oferecendo os demais recursos para ajudar o paciente a resolver o seu problema e também disponibilizando diversas ferramentas para possibilitar que o médico acompanhe de perto a situação do paciente.
 
-![Imagem2](https://github.com/rcm2005/Health-Center-Notredame/assets/68041167/6c9971cf-b886-4da0-93a3-b2184ce185c2)
+![Imagem2](https://github.com/rcm2005/Health-Center-Notredame/assets/68041167/6c9971cf-b886-4da0-93a3-b2184ce185c2 <br>
 Figura 7: Menu principal do programa para pacientes)
 
 Uma vez que o usuário faz login na aplicação, algumas opções são disponibilizadas, oferecendo assim os recursos necessários para ajudar o cliente. As primeiras 3 opções são autoexplicativas, o paciente agenda uma consulta especificando os sintomas, podendo remarca-la ou ver quais consultas estão agendadas, já a opção 5 oferece a possibilidade de importar os dados coletados pelo eletrocardiograma, armazenando esses dados em um arquivo exclusivo de cada cliente.
