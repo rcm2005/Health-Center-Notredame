@@ -1,0 +1,83 @@
+[
+  {
+    "user": "rafaelmattos123",
+    "nome": "rafael",
+    "tipo": "medico",
+    "Email": "rcm3005@gmail.com",
+    "data de nascimento": "15/05/2005",
+    "cpf": "14747380795",
+    "senha": "Fabiocarla123"
+  },
+  {
+    "user": "maria_silva",
+    "nome": "Maria Silva",
+    "tipo": "medico",
+    "Email": "maria.silva@example.com",
+    "data de nascimento": "22/09/1998",
+    "cpf": "25836974125",
+    "senha": "Maria1234"
+  },
+  {
+    "user": "joao_pereira",
+    "nome": "Jo\u00e3o Pereira",
+    "tipo": "paciente",
+    "Email": "joao.pereira@example.com",
+    "data de nascimento": "10/11/1990",
+    "cpf": "36985214785",
+    "senha": "Pereira#99"
+  },
+  {
+    "user": "italo123",
+    "nome": "Italo do mar ney",
+    "tipo": "paciente",
+    "Email": "italo@gmail.com",
+    "data de nascimento": "01/10/2000",
+    "cpf": "23498748994",
+    "senha": "Fabiocarla123"
+  },
+  {
+    "user": "rcm",
+    "nome": "rafael",
+    "tipo": "paciente",
+    "Email": "matis@",
+    "data de nascimento": "15/02/1999",
+    "cpf": "12345678910",
+    "senha": "Rafaelmattos123"
+  },
+  {
+    "user": "rafa",
+    "nome": "rafail",
+    "tipo": "paciente",
+    "Email": "rcm@",
+    "data de nascimento": "15/03/2000",
+    "cpf": "12345678910",
+    "senha": "Rafaelmattos123"
+  },
+  {
+    "user": "jose",
+    "nome": "Jos\u00e9 raimundo",
+    "Email": "jose@",
+    "data de nascimento": "18/03/1900",
+    "cpf": "12345678910",
+    "senha": "Jose123",
+    "tipo": "medico"
+  },
+  {
+    "user": "fabio",
+    "nome": "Fabio Vassallo Mattos",
+    "Email": "mattos.fabio2010@bol.com.br",
+    "data de nascimento": "23/05/1969",
+    "cpf": "00512628785",
+    "senha": "Fabiocarla123",
+    "tipo": "medico"
+  },
+  {
+    "user": "luciano1",
+    "nome": "Luciano Souza",
+    "Email": "luciano@email.com",
+    "data de nascimento": "01/01/1987",
+    "cpf": "12345678910",
+    "senha": "Luciano123",
+    "tipo": "paciente"
+  }
+]

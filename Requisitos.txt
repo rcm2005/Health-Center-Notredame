@@ -1,0 +1,17 @@
+Para que o programa funcione corretamente é necessário realizar a instalação
+de alguns pacotes. Este arquivo está organizado de forma que o nome do pacote
+seja seguido do comando de instalação, basta executar esse comando ou no terminal
+do python ou no cmd (Prompt de Comando) do windows 
+
+
+
+-paho-mqtt 1.6.1
+pip install paho-mqtt
+
+
+-matplotlib 3.8.2
+pip install matplotlib
+
+
+-bcrypt 4.0.1
+pip install bcrypt
