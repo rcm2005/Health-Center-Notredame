@@ -4,7 +4,7 @@ A Notredame nos desafiou na Global Solutions a tornar a saúde mais acessível �
 
 # **O programa:**
 
-
+![Imagem1](https://github.com/rcm2005/Health-Center-Notredame/assets/68041167/ef843ab5-93a9-485c-9029-72bbbff23864)
 `           `(Figura 6: Tela inicial do programa Health Center construído em Python)
 
 O programa Health Center foi pensado para fornecer uma experiência completa e intuitiva tanto para o usuário paciente quanto para o usuário médico, oferecendo os demais recursos para ajudar o paciente a resolver o seu problema e também disponibilizando diversas ferramentas para possibilitar que o médico acompanhe de perto a situação do paciente.
