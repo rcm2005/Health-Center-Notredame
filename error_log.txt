@@ -1,1 +1,4 @@
 Erro ao cadastrar usuário: CPF inválido. Certifique-se de digitar apenas números e 11 dígitos.
+Erro ao marcar consulta: time data '10/10/2023' does not match format '%d/%m/%Y %H:%M'
+Erro ao marcar consulta: time data '10/10/2023' does not match format '%d/%m/%Y %H:%M'
+Erro ao marcar consulta: time data '10/10/2023' does not match format '%d/%m/%Y %H:%M'

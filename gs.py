@@ -220,18 +220,19 @@ def marcar_consulta():
         print("Você precisa fazer login para marcar uma consulta.")
         return
 
-    nome_paciente = usuario["nome"]  #coleta nome do dicionário de dados paciente
-    data_consulta = input("Digite a data da consulta (formato DD/MM/YYYY HH:MM): ")
+    nome_paciente = usuario["nome"]  # coleta nome do dicionário de dados paciente
+    data_consulta_str = input("Digite a data da consulta (formato DD/MM/YYYY HH:MM): ")
 
     try:
         # Converte a string de data para um objeto datetime
-        data_consulta = datetime.strptime(data_consulta, "%d/%m/%Y %H:%M")
+        data_consulta = datetime.strptime(data_consulta_str, "%d/%m/%Y %H:%M")
     except Exception as e:
         # Registra o erro em um arquivo de log
         with open("error_log.txt", "a", encoding="utf8") as log_file:
             log_file.write(f"Erro ao marcar consulta: {str(e)}\n")
 
         print(f"Erro ao marcar consulta: {e}")
+        return
 
     sintomas = input("Digite os sintomas: ")
     tempo_sintomas = input("Há quanto tempo os sintomas começaram? ")
@@ -249,6 +250,21 @@ def marcar_consulta():
         "historico_enfermidade": historico_enfermidade
     }
 
+    # Carrega dados existentes do arquivo se existir, ou cria uma lista vazia
+    try:
+        with open("consultas.json", "r", encoding="utf8") as file:
+            consultas = json.load(file)
+    except FileNotFoundError:
+        consultas = []
+
+    # Adiciona a nova consulta à lista
+    consultas.append(consulta)
+
+    # Escreve a lista atualizada de consultas de volta ao arquivo
+    with open("consultas.json", "w", encoding="utf8") as file:
+        json.dump(consultas, file, ensure_ascii=False, indent=2)
+
+    print("Consulta marcada com sucesso.")
 '''---------Exibir consultas marcadas------'''
 def mostrar_consultas():
     global usuario
@@ -257,7 +273,7 @@ def mostrar_consultas():
         return
 
     try:
-        with open("consultas.json", "r") as arquivo:
+        with open("consultas.json", "r", encoding="utf8") as arquivo:
             consultas = json.load(arquivo)
 
         if not consultas:
@@ -265,8 +281,11 @@ def mostrar_consultas():
         else:
             print("Consultas marcadas:")
             for idx, consulta in enumerate(consultas, start=1):
-                if consulta["paciente"] == usuario["nome"]:  #varrendo dados no arquivo "consultas.json"
-                    print(f"{idx}. Paciente: {consulta['paciente']}, Data: {consulta['data']}, Sintomas: {consulta.get('sintomas', 'Nenhum sintoma registrado')}")
+                # Convert both names to lowercase for case-insensitive comparison
+                if consulta["paciente"].lower() == usuario["nome"].lower():
+                    sintomas = consulta.get("sintomas", "Nenhum sintoma registrado")
+                    print(f"{idx}. Paciente: {consulta['paciente']}, Data: {consulta['data']}, Sintomas: {sintomas}")
+
     except Exception as e:
         # Registra o erro em um arquivo de log
         with open("error_log.txt", "a", encoding="utf8") as log_file:

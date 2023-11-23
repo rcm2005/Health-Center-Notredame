@@ -1,30 +1,20 @@
 [
   {
-    "paciente": "rafael",
-    "data": "1969-05-23 12:00"
+    "paciente": "José victor souza",
+    "data": "2023-10-10 10:00",
+    "sintomas": "dor de cabeça",
+    "tempo_sintomas": "10 dias",
+    "evolucao_sintomas": "manteve",
+    "medicamento_uso": "nao",
+    "historico_enfermidade": "nao"
   },
   {
-    "paciente": "rafael",
-    "data": "2005-05-15 13:30"
-  },
-  {
-    "paciente": "rafael",
-    "data": "2023-11-19 11:30",
-    "sintomas": "dor de cabe\u00e7a, tosse, febre alta, coriza"
-  },
-  {
-    "paciente": "Jos\u00e9 raimundo",
-    "data": "2020-10-12 12:30",
-    "sintomas": "dor de garganta, tontura, ins\u00f4nia"
-  },
-  {
-    "paciente": "Fabio Vassallo Mattos",
-    "data": "2023-11-22 15:00",
-    "sintomas": "tosse, tontura, n\u00e1usea, falta de fome"
-  },
-  {
-    "paciente": "Luciano Souza",
-    "data": "2023-11-30 16:30",
-    "sintomas": "Dor de cabe\u00e7a, fadiga, n\u00e1usea, coriza, dor no corpo"
+    "paciente": "José victor souza",
+    "data": "2023-10-10 10:00",
+    "sintomas": "dor de cabeça",
+    "tempo_sintomas": "1 dia",
+    "evolucao_sintomas": "manteve",
+    "medicamento_uso": "nao",
+    "historico_enfermidade": "nao"
   }
 ]

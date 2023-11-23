@@ -7,5 +7,14 @@
     "cpf": "14747380795",
     "senha": "$2b$12$ZxtjJUBMv8hxoxnwiZV13OIPfsDkW0AzuS1EMJ.fCCjdft78/fGd2",
     "tipo": "medico"
+  },
+  {
+    "user": "jose",
+    "nome": "Jos\u00e9 victor souza",
+    "Email": "jose@gmail.com",
+    "data de nascimento": "01/01/2000",
+    "cpf": "12345678910",
+    "senha": "$2b$12$sjO1xAdA8K3ZGoXIcJ9FXO2VpjnWBOF6MlkDB4P0OCFMOv/0JEFnS",
+    "tipo": "paciente"
   }
 ]
