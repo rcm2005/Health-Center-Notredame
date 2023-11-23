@@ -27,6 +27,8 @@ def init():
 def validar_cpf(cpf):
     if not cpf.isdigit() or len(cpf) != 11: #conferindo tamanho do cpf
         raise ValueError("CPF inválido. Certifique-se de digitar apenas números e 11 dígitos.")
+    
+
 
 def validar_data_nascimento(nasc): #verificando formatação da data
     if not nasc.count('/') == 2 or not all(part.isdigit() for part in nasc.split('/')):
@@ -69,10 +71,10 @@ def atualizar_senha(nome, nova_senha):
 
     for user in usuarios:
         if user.get("user") == nome:
-            # Use bcrypt para hashear a nova senha
+            # Usa bcrypt para hashear a nova senha
             nova_senha_hash = bcrypt.hashpw(nova_senha.encode('utf-8'), bcrypt.gensalt())
             # Atualiza a senha no registro
-            user["senha"] = nova_senha_hash.decode('utf-8')  # Converta bytes para string antes de armazenar
+            user["senha"] = nova_senha_hash.decode('utf-8')  # Converte bytes para string antes de armazenar
 
             print(f"Nova senha fornecida: {nova_senha}")
             print(f"Nova senha hasheada: {nova_senha_hash.decode('utf-8')}")
@@ -175,7 +177,7 @@ def login():
 
         # Verifica se as credenciais (email e cpf) estão corretas
         usuario_encontrado = False
-        for user in usuarios:
+        for user in usuarios:   #busca o usuário por email e cpf
             if user["cpf"] == cpf and user["Email"] == email:
                 usuario_encontrado = True
                 nome = user['user']  # Atualiza a variável global nome
