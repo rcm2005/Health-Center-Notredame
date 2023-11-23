@@ -11,7 +11,9 @@ import bcrypt
 
 log = 0  # Definindo a variável que registra se o login foi feito ou não
 contador = 5  # Definindo contador de tentativas de login
-usuario = None  # Inicializando a variável do usuário
+usuario = {}  # Inicializando a variável do usuário
+
+nome = None  # Inicializando a variável do nome
 '''------Iniciando programa------'''
 def init():
     print("Seja bem-vindo!")
@@ -20,6 +22,8 @@ def init():
     contador = 5  # Resetando o número de tentativas
     usuario = None  # Resetando o usuário
 
+
+'''Sessão de verificação/validação'''
 def validar_cpf(cpf):
     if not cpf.isdigit() or len(cpf) != 11: #conferindo tamanho do cpf
         raise ValueError("CPF inválido. Certifique-se de digitar apenas números e 11 dígitos.")
@@ -31,6 +35,53 @@ def validar_data_nascimento(nasc): #verificando formatação da data
 def validar_senha(senha, senha1): #verificando se a senha está forte e confirmada
     if senha != senha1 or not any(c.isupper() for c in senha) or not any(c.isdigit() for c in senha):
         raise ValueError('As senhas não coincidem ou não atendem um ou mais requisitos. Tente novamente.')
+
+def verificar_credenciais(email, cpf):
+    try:
+        with open("cadastros.json", "r", encoding="utf8") as arquivo:
+            usuarios = json.loads(arquivo.read())
+    except Exception as e:
+        # Registra o erro em um arquivo de log
+        with open("error_log.txt", "a", encoding="utf8") as log_file:
+            log_file.write(f"Erro ao verificar credenciais: {str(e)}\n")
+
+        print(f"Erro ao verificar credenciais: {e}")
+        return False
+
+    for user in usuarios:
+        if user.get("Email") == email and user.get("cpf") == cpf:
+            return True
+
+    return False
+
+
+def atualizar_senha(nome, nova_senha):
+    try:
+        with open("cadastros.json", "r", encoding="utf8") as arquivo:
+            usuarios = json.load(arquivo)
+    except Exception as e:
+        # Registra o erro em um arquivo de log
+        with open("error_log.txt", "a", encoding="utf8") as log_file:
+            log_file.write(f"Erro ao atualizar senha: {str(e)}\n")
+
+        print(f"Erro ao atualizar senha: {e}")
+        return
+
+    for user in usuarios:
+        if user.get("user") == nome:
+            # Use bcrypt para hashear a nova senha
+            nova_senha_hash = bcrypt.hashpw(nova_senha.encode('utf-8'), bcrypt.gensalt())
+            # Atualiza a senha no registro
+            user["senha"] = nova_senha_hash.decode('utf-8')  # Converta bytes para string antes de armazenar
+
+            print(f"Nova senha fornecida: {nova_senha}")
+            print(f"Nova senha hasheada: {nova_senha_hash.decode('utf-8')}")
+
+    # Reescreve a lista no arquivo "cadastros.json"
+    with open("cadastros.json", "w", encoding="utf8") as arquivo:
+        json.dump(usuarios, arquivo, indent=2, ensure_ascii=False)
+
+'''----------------------------------'''
 
 '''-------Cadastrando usuário---------'''
 def cadastrar_usuario():
@@ -89,9 +140,10 @@ def cadastrar_usuario():
 '''---------função de login-----------'''
 def login():
     global log, contador, usuario, nome
+
     nome = input("Por favor, digite o usuário: ")
     senha = input("Por favor, digite a senha: ")
-    """Procurando o usuário dentro do registro de contas"""
+
     try:
         with open("cadastros.json", "r", encoding="utf8") as arquivo:
             usuarios = json.loads(arquivo.read())
@@ -107,14 +159,40 @@ def login():
         if user["user"] == nome and bcrypt.checkpw(senha.encode('utf-8'), user["senha"].encode('utf-8')):
             print("Login bem sucedido!")
             usuario = user
-            nome = user["nome"]
             log = 1
+            contador = 5  # Reseta o contador após um login bem-sucedido
+            if log == 1:
+                menu()
             return
 
     print("Usuário ou senha incorretos.")
     contador -= 1
     if contador == 0:
-        print("Por favor entre em contato com o suporte")
+        print("Número máximo de tentativas atingido. Redefina a senha.")
+        # Verifica se o usuário excedeu o número máximo de tentativas
+        email = input("Digite o seu Email: ")
+        cpf = input("Digite seu CPF (apenas números): ")
+
+        # Verifica se as credenciais (email e cpf) estão corretas
+        usuario_encontrado = False
+        for user in usuarios:
+            if user["cpf"] == cpf and user["Email"] == email:
+                usuario_encontrado = True
+                nome = user['user']  # Atualiza a variável global nome
+                break
+
+        if usuario_encontrado:
+            nova_senha = input("Digite a nova senha: ")
+            confirmar_senha = input("Confirme a nova senha: ")
+
+            if nova_senha == confirmar_senha:
+                # Atualiza a senha no registro
+                atualizar_senha(nome, nova_senha)
+                print("Senha redefinida com sucesso!")
+            else:
+                print("As senhas não coincidem. Tente novamente.")
+        else:
+            print("Credenciais inválidas. Não é possível redefinir a senha.")
 
 
 
@@ -431,4 +509,4 @@ def menu():
 
 init()
 entrar()
-menu()
+
